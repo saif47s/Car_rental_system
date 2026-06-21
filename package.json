@@ -1,0 +1,35 @@
+{
+  "name": "gari-rental-manager",
+  "version": "1.0.0",
+  "description": "HK Gari Rental Management System",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --x64",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "SAIF Professional Enterprise",
+  "license": "ISC",
+  "type": "commonjs",
+  "build": {
+    "appId": "com.hk.garirentalmanager",
+    "productName": "HK Gari Rental Manager",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "runAfterFinish": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^42.4.1",
+    "electron-builder": "^26.15.3"
+  }
+}
