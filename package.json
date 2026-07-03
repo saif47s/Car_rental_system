@@ -18,6 +18,7 @@
     "directories": {
       "output": "dist"
     },
+    "artifactName": "${productName} Setup ${version}-${arch}.${ext}",
     "win": {
       "target": "nsis",
       "icon": "icon.ico"
@@ -28,11 +29,11 @@
       "runAfterFinish": true,
       "perMachine": false,
       "createDesktopShortcut": true,
-      "createStartMenuShortcut": true
+      "createStartMenuShortcut": false
     }
   },
   "devDependencies": {
-    "electron": "^42.4.1",
+    "electron": "^22.3.27",
     "electron-builder": "^26.15.3"
   }
 }
