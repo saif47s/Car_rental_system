@@ -35,5 +35,8 @@
   "devDependencies": {
     "electron": "^22.3.27",
     "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "acorn": "^8.17.0"
   }
 }

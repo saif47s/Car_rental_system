@@ -405,9 +405,6 @@ tr:hover td { background: #faf8f0; }
     <a onclick="goPage('reports')" data-page="reports">
       <span class="ico">📊</span> Munafa / Nuqsan
     </a>
-    <a onclick="goPage('owners')" data-page="owners">
-      <span class="ico">🤝</span> Owner Payments
-    </a>
     <a onclick="goPage('backup')" data-page="backup">
       <span class="ico">💾</span> Backup / Restore
     </a>
@@ -495,7 +492,6 @@ tr:hover td { background: #faf8f0; }
     <div class="card">
       <div class="card-title">📋 Tamam Rentals</div>
       <div style="display:flex;gap:10px;margin-bottom:12px;align-items:center;flex-wrap:wrap">
-        <input type="text" id="rental-search" oninput="renderRentalTable()" placeholder="🔍 Customer ya Gari No. se search karein..." style="padding:7px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;min-width:220px">
         <input type="month" id="rental-filter-month" onchange="document.getElementById('rental-filter-date').value=''; renderRentalTable()" style="padding:7px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px">
         <input type="date" id="rental-filter-date" onchange="document.getElementById('rental-filter-month').value=''; renderRentalTable()" style="padding:7px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px">
         <select id="rental-filter-vehicle" onchange="renderRentalTable()" style="padding:7px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px">
@@ -518,7 +514,6 @@ tr:hover td { background: #faf8f0; }
           <tbody id="rental-tbody"></tbody>
         </table>
       </div>
-      <div id="rental-count" style="margin-top:10px;font-size:12.5px;color:#8a8fa3;font-weight:600"></div>
     </div>
   </div>
 
@@ -531,7 +526,6 @@ tr:hover td { background: #faf8f0; }
     <div class="card">
       <div class="card-title">🗓️ Tamam Bookings</div>
       <div style="display:flex;gap:10px;margin-bottom:12px;align-items:center;flex-wrap:wrap">
-        <input type="text" id="booking-search" oninput="renderBookingTable()" placeholder="🔍 Driver, CNIC, Mobile ya Gari No. se search karein..." style="padding:7px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;min-width:220px">
         <input type="month" id="booking-filter-month" onchange="document.getElementById('booking-filter-date').value=''; renderBookingTable()" style="padding:7px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px">
         <input type="date" id="booking-filter-date" onchange="document.getElementById('booking-filter-month').value=''; renderBookingTable()" style="padding:7px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px">
         <select id="booking-filter-vehicle" onchange="renderBookingTable()" style="padding:7px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px">
@@ -547,13 +541,12 @@ tr:hover td { background: #faf8f0; }
         <table id="booking-table">
           <thead><tr>
             <th>Gaya (Tarikh/Waqt)</th><th>Wapsi (Tarikh/Waqt)</th><th>Gari</th><th>Driver</th><th>Status</th>
-            <th>Meter KM</th><th>Booking Amt</th><th>Final Rent</th><th>Commission</th><th>Owner Amt</th><th>Advance (Rs)</th><th>Balance (Rs)</th>
+            <th>Meter KM</th><th>Booking Amt</th><th>Final Rent</th><th>Advance (Rs)</th><th>Balance (Rs)</th>
             <th>Actions</th>
           </tr></thead>
           <tbody id="booking-tbody"></tbody>
         </table>
       </div>
-      <div id="booking-count" style="margin-top:10px;font-size:12.5px;color:#8a8fa3;font-weight:600"></div>
     </div>
   </div>
 
@@ -565,16 +558,12 @@ tr:hover td { background: #faf8f0; }
     </div>
     <div class="card">
       <div class="card-title">👥 Customers List</div>
-      <div style="display:flex;gap:10px;margin-bottom:12px;align-items:center;flex-wrap:wrap">
-        <input type="text" id="customer-search" oninput="renderCustomerTable()" placeholder="🔍 Naam, CNIC ya Mobile se search karein..." style="padding:8px 12px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;min-width:260px;flex:1;max-width:360px">
-      </div>
       <div class="tbl-wrap">
         <table>
           <thead><tr><th>#</th><th>Naam</th><th>Walid Ka Naam</th><th>CNIC</th><th>Mobile</th><th>Total Trips</th><th>Total Pending</th><th>Actions</th></tr></thead>
           <tbody id="customer-tbody"></tbody>
         </table>
       </div>
-      <div id="customer-count" style="margin-top:10px;font-size:12.5px;color:#8a8fa3;font-weight:600"></div>
     </div>
   </div>
 
@@ -586,16 +575,12 @@ tr:hover td { background: #faf8f0; }
     </div>
     <div class="card">
       <div class="card-title">🚗 Vehicles List</div>
-      <div style="display:flex;gap:10px;margin-bottom:12px;align-items:center;flex-wrap:wrap">
-        <input type="text" id="vehicle-search" oninput="renderVehicleTable()" placeholder="🔍 Gari No. ya Model se search karein..." style="padding:8px 12px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;min-width:260px;flex:1;max-width:360px">
-      </div>
       <div class="tbl-wrap">
         <table>
           <thead><tr><th>#</th><th>Gari No.</th><th>Maker/Model</th><th>Colour</th><th>Fix Rent/Din</th><th>Total Kamaya</th><th>Total Days</th><th>Actions</th></tr></thead>
           <tbody id="vehicle-tbody"></tbody>
         </table>
       </div>
-      <div id="vehicle-count" style="margin-top:10px;font-size:12.5px;color:#8a8fa3;font-weight:600"></div>
     </div>
   </div>
 
@@ -646,41 +631,6 @@ tr:hover td { background: #faf8f0; }
     </div>
   </div>
 
-  <!-- ═══════════ OWNER PAYMENTS ═══════════ -->
-  <div class="page" id="page-owners">
-    <div style="display:flex;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
-      <button class="btn btn-outline" onclick="exportToExcel('ownerpayments')" style="color:var(--green);border-color:var(--green)">📊 Excel Export</button>
-      <button class="btn btn-primary" onclick="openOwnerPaymentModal()">＋ Naya Payment Darj Karein</button>
-    </div>
-    <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)">
-      <div class="kpi green"><div class="label">Total Owners Ka Munafa</div><div class="value" id="own-total-munafa">Rs 0</div></div>
-      <div class="kpi blue"><div class="label">Total Ada Kiya Gaya</div><div class="value" id="own-total-paid">Rs 0</div></div>
-      <div class="kpi red"><div class="label">Total Baaki (Pending)</div><div class="value" id="own-total-balance">Rs 0</div></div>
-    </div>
-    <div class="card" style="margin-bottom:16px">
-      <div class="card-title">🤝 Owner-Wise Hisaab</div>
-      <div class="tbl-wrap">
-        <table>
-          <thead><tr><th>Owner Ka Naam</th><th>Total Munafa</th><th>Ab Tak Ada</th><th>Baaki</th><th>Actions</th></tr></thead>
-          <tbody id="owner-ledger-tbody"></tbody>
-        </table>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-title">🧾 Payment History</div>
-      <div style="display:flex;gap:10px;margin-bottom:12px;align-items:center;flex-wrap:wrap">
-        <input type="text" id="owner-payment-search" oninput="renderOwnerPaymentTable()" placeholder="🔍 Owner ka naam se search karein..." style="padding:8px 12px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;min-width:260px;flex:1;max-width:360px">
-      </div>
-      <div class="tbl-wrap">
-        <table>
-          <thead><tr><th>Tarikh</th><th>Owner</th><th>Raqam (Rs)</th><th>Notes</th><th>Actions</th></tr></thead>
-          <tbody id="owner-payment-tbody"></tbody>
-        </table>
-      </div>
-      <div id="owner-payment-count" style="margin-top:10px;font-size:12.5px;color:#8a8fa3;font-weight:600"></div>
-    </div>
-  </div>
-
   <!-- ═══════════ BACKUP / RESTORE ═══════════ -->
   <div class="page" id="page-backup">
     <div class="card">
@@ -720,7 +670,6 @@ tr:hover td { background: #faf8f0; }
       <button class="btn btn-sm trash-tab" data-cat="customers" onclick="setTrashTab('customers')">👥 Customers</button>
       <button class="btn btn-sm trash-tab" data-cat="vehicles" onclick="setTrashTab('vehicles')">🚗 Vehicles</button>
       <button class="btn btn-sm trash-tab" data-cat="expenses" onclick="setTrashTab('expenses')">💸 Kharcha</button>
-      <button class="btn btn-sm trash-tab" data-cat="ownerPayments" onclick="setTrashTab('ownerPayments')">🤝 Owner Payments</button>
     </div>
 
     <div id="trash-content"></div>
@@ -1003,40 +952,7 @@ tr:hover td { background: #faf8f0; }
         </div>
         <div class="form-group" style="grid-column: 1 / -1;">
           <label>✅ Final Rent (Manual) *</label>
-          <input type="number" id="b-final-rent" placeholder="0" min="0" oninput="updateBookingCommission()">
-        </div>
-        <div class="form-group" style="grid-column: 1 / -1;">
-          <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
-            <input type="checkbox" id="b-is-commission" onchange="onBookingCommissionChange()">
-            Is Commission Based? (Platform / Owner)
-          </label>
-        </div>
-        <div id="b-commission-group" class="form-grid" style="display:none; grid-column: 1 / -1; padding: 10px; background: #fff8e1; border-radius: 8px;">
-          <div class="form-group" style="grid-column: 1 / -1; margin-bottom: 8px; display: flex; gap: 10px;">
-            <div style="flex:1;">
-              <label>Owner Name (Gari ke Malik ka Naam)</label>
-              <input type="text" id="b-owner-name" placeholder="Naam darj karein...">
-            </div>
-            <div style="flex:1;">
-              <label>Owner CNIC (Optional)</label>
-              <input type="text" id="b-owner-cnic" placeholder="12345-1234567-1" maxlength="15" oninput="formatCNIC(this)">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Platform Commission</label>
-            <div style="display:flex;gap:6px">
-              <select id="b-commission-type" onchange="updateBookingCommission()" style="width:90px">
-                <option value="percent">%</option>
-                <option value="amount">Rs</option>
-              </select>
-              <input type="number" id="b-commission-value" placeholder="0" min="0" oninput="updateBookingCommission()" style="flex:1">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Commission Amount (Auto)</label>
-            <div class="auto-field" id="b-commission-display" style="color:var(--amber); border-color:#ffe0b2; background:#fff3e0;">Rs 0</div>
-            <input type="hidden" id="b-commission-amount">
-          </div>
+          <input type="number" id="b-final-rent" placeholder="0" min="0">
         </div>
       </div>
 
@@ -1236,42 +1152,6 @@ tr:hover td { background: #faf8f0; }
   </div>
 </div>
 
-<!-- OWNER PAYMENT MODAL -->
-<div class="modal-overlay" id="owner-payment-modal">
-  <div class="modal" style="width:500px">
-    <div class="modal-header">
-      <h3 id="owner-payment-modal-title">🤝 Owner Ko Payment Darj Karein</h3>
-      <button class="close-btn" onclick="closeModal('owner-payment-modal')">×</button>
-    </div>
-    <div class="modal-body">
-      <div class="form-grid">
-        <div class="form-group" style="grid-column: 1 / -1;">
-          <label>👤 Owner Chunein *</label>
-          <select id="op-owner-key">
-            <option value="">— Owner Chunein —</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>💵 Raqam (Rs) *</label>
-          <input type="number" id="op-amount" placeholder="0" min="0">
-        </div>
-        <div class="form-group">
-          <label>📅 Tarikh *</label>
-          <input type="date" id="op-date">
-        </div>
-      </div>
-      <div class="form-group" style="margin-top:12px">
-        <label>📝 Notes</label>
-        <input type="text" id="op-notes" placeholder="Koi note...">
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" onclick="closeModal('owner-payment-modal')">Wapis</button>
-      <button class="btn btn-primary" onclick="saveOwnerPayment()">✓ Save Karein</button>
-    </div>
-  </div>
-</div>
-
 <!-- RECEIPT MODAL -->
 <div class="modal-overlay" id="receipt-modal">
   <div class="modal" style="width:440px">
@@ -1435,7 +1315,7 @@ function renderTrashPage(){
     return;
   }
 
-  const catLabel = {rentals:'📋 Rental Log', bookings:'🗓️ Booking Log', customers:'👥 Customer', vehicles:'🚗 Vehicle', expenses:'💸 Kharcha', ownerPayments:'🤝 Owner Payment'};
+  const catLabel = {rentals:'📋 Rental Log', bookings:'🗓️ Booking Log', customers:'👥 Customer', vehicles:'🚗 Vehicle', expenses:'💸 Kharcha'};
 
   el.innerHTML = items.map(item=>{
     const cat = item._category;
@@ -1456,9 +1336,6 @@ function renderTrashPage(){
     } else if(cat==='expenses'){
       title = `${item.type||'—'} — ${fmtRs(item.amount)}`;
       sub = `${fmtDate(item.date)} | ${item.desc||'—'}`;
-    } else if(cat==='ownerPayments'){
-      title = `${item.ownerName||'—'} — ${fmtRs(item.amount)}`;
-      sub = `${fmtDate(item.date)} | ${item.notes||'—'}`;
     }
     return `<div class="trash-item">
       <div class="ti-info">
@@ -1485,21 +1362,20 @@ function saveData(k,v){ DB.set(k,v); }
 // ══════════════════════════════════════════════════════════════
 const pageTitles = {
   dashboard:'Dashboard', rental:'Rental Log', booking:'Booking Log', customers:'Customers',
-  vehicles:'Vehicles', expenses:'Kharcha', reports:'Munafa / Nuqsan', owners:'🤝 Owner Payments',
+  vehicles:'Vehicles', expenses:'Kharcha', reports:'Munafa / Nuqsan',
   backup:'Backup / Restore', trash:'🗑️ Recycle Bin', settings:'⚙️ Settings'
 };
 function goPage(p){
-  if(p==='reports' || p==='owners') {
+  if(p==='reports') {
     openPinModal((success) => {
       if(success) {
         document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
         document.querySelectorAll('#sidebar nav a').forEach(el=>el.classList.remove('active'));
-        document.getElementById('page-'+p).classList.add('active');
-        const navLink = document.querySelector(`[data-page="${p}"]`);
+        document.getElementById('page-reports').classList.add('active');
+        const navLink = document.querySelector(`[data-page="reports"]`);
         if(navLink) navLink.classList.add('active');
-        document.getElementById('page-title').textContent = pageTitles[p];
-        if(p==='reports') renderReports();
-        if(p==='owners') renderOwnerPaymentsPage();
+        document.getElementById('page-title').textContent = pageTitles['reports'];
+        renderReports();
         closeSidebar();
       } else {
         goPage('dashboard');
@@ -1770,27 +1646,20 @@ function saveForgotPassword(){
 
 function renderDashboard(){
   const rentals = getData('rentals');
-  const bookings = getData('bookings');
   const expenses = getData('expenses');
   const cm = curMonth();
   const todayStr = today();
 
   const monthRentals = rentals.filter(r=>r.date && r.date.startsWith(cm) && r.status==='Rent Pe Gayi');
-  const monthBookings = bookings.filter(b=>b.dateOut && b.dateOut.startsWith(cm) && b.status==='Booking Pe Gayi');
-  const rentalIncome = monthRentals.reduce((s,r)=>s+(r.isCommission ? (+r.commissionAmount||0) : (+r.rent||0)),0);
-  const bookingIncome = monthBookings.reduce((s,b)=>s+(b.isCommission ? (+b.commissionAmount||0) : (+b.finalRent||0)),0);
-  const income = rentalIncome + bookingIncome;
-  const rentalPending = rentals.filter(r=>r.status==='Rent Pe Gayi' && (+r.rent||0)-(+r.advance||0)>0)
+  const income = monthRentals.reduce((s,r)=>s+(r.isCommission ? (+r.commissionAmount||0) : (+r.rent||0)),0);
+  const pending = rentals.filter(r=>r.status==='Rent Pe Gayi' && (+r.rent||0)-(+r.advance||0)>0)
                          .reduce((s,r)=>s+(+r.rent||0)-(+r.advance||0),0);
-  const bookingPending = bookings.filter(b=>b.status==='Booking Pe Gayi' && (+b.finalRent||0)-(+b.advance||0)>0)
-                         .reduce((s,b)=>s+(+b.finalRent||0)-(+b.advance||0),0);
-  const pending = rentalPending + bookingPending;
   const monthExp = expenses.filter(e=>e.date && e.date.startsWith(cm)).reduce((s,e)=>s+(+e.amount||0),0);
   const todayActive = rentals.filter(r=>r.date===todayStr && r.status==='Rent Pe Gayi');
 
   if (dashboardValuesVisible) {
     document.getElementById('kpi-income').textContent = fmtRs(income);
-    document.getElementById('kpi-income-sub').textContent = (monthRentals.length + monthBookings.length) + ' entries is mahine';
+    document.getElementById('kpi-income-sub').textContent = monthRentals.length + ' rentals is mahine';
     document.getElementById('kpi-profit').textContent = fmtRs(income - monthExp);
     document.getElementById('kpi-profit-sub').textContent = fmtRs(income)+' − '+fmtRs(monthExp);
   } else {
@@ -1934,27 +1803,6 @@ function updateCommission() {
   document.getElementById('r-commission-display').textContent = 'Rs ' + commAmt.toLocaleString();
 }
 
-function onBookingCommissionChange() {
-  const isComm = document.getElementById('b-is-commission').checked;
-  document.getElementById('b-commission-group').style.display = isComm ? 'grid' : 'none';
-  updateBookingCommission();
-}
-
-function updateBookingCommission() {
-  const rent = +document.getElementById('b-final-rent').value || 0;
-  const isComm = document.getElementById('b-is-commission').checked;
-  if (!isComm) {
-    document.getElementById('b-commission-amount').value = 0;
-    document.getElementById('b-commission-display').textContent = 'Rs 0';
-    return;
-  }
-  const type = document.getElementById('b-commission-type').value;
-  const val = +document.getElementById('b-commission-value').value || 0;
-  const commAmt = type === 'percent' ? Math.round(rent * val / 100) : val;
-  document.getElementById('b-commission-amount').value = commAmt;
-  document.getElementById('b-commission-display').textContent = 'Rs ' + commAmt.toLocaleString();
-}
-
 function onStatusChange(){
   const status=document.getElementById('r-status').value;
   const extra=document.getElementById('r-extra-fields');
@@ -2090,14 +1938,12 @@ function renderRentalTable(){
   const monthInput=document.getElementById('rental-filter-month');
   const dateInput=document.getElementById('rental-filter-date');
 
-  const searchTerm=(document.getElementById('rental-search')?.value||'').trim().toLowerCase();
-
   let rentals=getData('rentals').filter(r=>{
     const balance=(+r.rent||0)-(+r.advance||0);
     const isPending = r.status==='Rent Pe Gayi' && balance>0;
     if(pendingOnly && !isPending) return false;
     
-    if(!pendingOnly && !searchTerm){
+    if(!pendingOnly){
       if(filterDate){
         if(r.date !== filterDate) return false;
       } else if(filterMonth){
@@ -2107,24 +1953,12 @@ function renderRentalTable(){
       }
     }
     if(filterVehicle && r.vehicle!==filterVehicle) return false;
-    if(searchTerm){
-      const hay = ((r.customer||'')+' '+(r.vehicle||'')).toLowerCase();
-      if(!hay.includes(searchTerm)) return false;
-    }
     return true;
   });
 
   // When showing pending-only, ignore the month restriction (so old pending dues aren't hidden) and sort biggest balance first
   if(pendingOnly){
     rentals.sort((a,b)=>((+b.rent||0)-(+b.advance||0))-((+a.rent||0)-(+a.advance||0)));
-    if(monthInput) monthInput.disabled=true;
-    if(dateInput) dateInput.disabled=true;
-  } else if(searchTerm){
-    rentals.sort((a,b)=>{
-      let cmp = (b.date||'').localeCompare(a.date||'');
-      if(cmp===0) return (b.id||0) - (a.id||0);
-      return cmp;
-    });
     if(monthInput) monthInput.disabled=true;
     if(dateInput) dateInput.disabled=true;
   } else {
@@ -2150,10 +1984,6 @@ function renderRentalTable(){
 
   const tbody=document.getElementById('rental-tbody');
   if(!tbody) return;
-
-  const countEl=document.getElementById('rental-count');
-  if(countEl) countEl.textContent = `📄 Total Entries: ${rentals.length}`;
-
   if(rentals.length===0){ tbody.innerHTML=`<tr><td colspan="14" class="empty">${pendingOnly?'✅ Koi pending rental nahi':'Koi rental nahi mila'}</td></tr>`; return; }
   tbody.innerHTML=rentals.map(r=>{
     const balance=(+r.rent||0)-(+r.advance||0);
@@ -2241,13 +2071,6 @@ function openBookingModal(id){
     document.getElementById('b-meter-out').value=b.meterOut||'';
     document.getElementById('b-meter-in').value=b.meterIn||'';
     document.getElementById('b-notes').value=b.notes||'';
-    document.getElementById('b-is-commission').checked=b.isCommission||false;
-    document.getElementById('b-owner-name').value=b.ownerName||'';
-    document.getElementById('b-owner-cnic').value=b.ownerCnic||'';
-    document.getElementById('b-commission-type').value=b.commissionType||'percent';
-    document.getElementById('b-commission-value').value=b.commissionValue||'';
-    document.getElementById('b-commission-group').style.display = b.isCommission ? 'grid' : 'none';
-    updateBookingCommission();
     calcBookingKM();
   } else {
     document.getElementById('booking-modal-title').textContent='🗓️ Nayi Booking Darj Karein';
@@ -2269,13 +2092,6 @@ function openBookingModal(id){
     document.getElementById('b-meter-in').value='';
     document.getElementById('b-notes').value='';
     document.getElementById('b-km-display').textContent='—';
-    document.getElementById('b-is-commission').checked=false;
-    document.getElementById('b-owner-name').value='';
-    document.getElementById('b-owner-cnic').value='';
-    document.getElementById('b-commission-type').value='percent';
-    document.getElementById('b-commission-value').value='';
-    document.getElementById('b-commission-group').style.display='none';
-    updateBookingCommission();
   }
   openModal('booking-modal');
 }
@@ -2286,17 +2102,6 @@ function saveBooking(){
   const finalRent=document.getElementById('b-final-rent').value;
   if(!status||!vehicle||finalRent===''){ showToast('⚠️ Status, Gari aur Final Rent zaroori hain!'); return; }
 
-  const isCommission=document.getElementById('b-is-commission').checked;
-  const ownerName=document.getElementById('b-owner-name').value.trim();
-  const ownerCnic=document.getElementById('b-owner-cnic').value.trim();
-  if(isCommission && ownerCnic && ownerCnic.length < 15) {
-    showToast('⚠️ Owner CNIC 13 digits ka hona zaroori hai!');
-    return;
-  }
-  const commissionType=document.getElementById('b-commission-type').value;
-  const commissionValue=+document.getElementById('b-commission-value').value||0;
-  const commissionAmount=+document.getElementById('b-commission-amount').value||0;
-
   const mo=+document.getElementById('b-meter-out').value||0;
   const mi=+document.getElementById('b-meter-in').value||0;
 
@@ -2306,7 +2111,6 @@ function saveBooking(){
     discountType: document.getElementById('b-discount-type').value,
     discountValue: +document.getElementById('b-discount-value').value||0,
     finalRent: +finalRent||0,
-    isCommission, ownerName, ownerCnic, commissionType, commissionValue, commissionAmount,
     driverName: document.getElementById('b-driver-name').value,
     driverCnic: document.getElementById('b-driver-cnic').value,
     driverMobile: document.getElementById('b-driver-mobile').value,
@@ -2337,14 +2141,12 @@ function renderBookingTable(){
   const monthInput=document.getElementById('booking-filter-month');
   const dateInput=document.getElementById('booking-filter-date');
 
-  const searchTerm=(document.getElementById('booking-search')?.value||'').trim().toLowerCase();
-
   let bookings=getData('bookings').filter(b=>{
     const balance=(+b.finalRent||0)-(+b.advance||0);
     const isPending = b.status==='Booking Pe Gayi' && balance>0;
     if(pendingOnly && !isPending) return false;
     
-    if(!pendingOnly && !searchTerm){
+    if(!pendingOnly){
       if(filterDate){
         if(b.dateOut !== filterDate) return false;
       } else if(filterMonth){
@@ -2354,23 +2156,11 @@ function renderBookingTable(){
       }
     }
     if(filterVehicle && b.vehicle!==filterVehicle) return false;
-    if(searchTerm){
-      const hay = ((b.driverName||'')+' '+(b.driverCnic||'')+' '+(b.driverMobile||'')+' '+(b.vehicle||'')).toLowerCase();
-      if(!hay.includes(searchTerm)) return false;
-    }
     return true;
   });
 
   if(pendingOnly){
     bookings.sort((a,b)=>((+b.finalRent||0)-(+b.advance||0))-((+a.finalRent||0)-(+a.advance||0)));
-    if(monthInput) monthInput.disabled=true;
-    if(dateInput) dateInput.disabled=true;
-  } else if(searchTerm){
-    bookings.sort((a,b)=>{
-      let cmp = (b.dateOut||'').localeCompare(a.dateOut||'');
-      if(cmp===0) return (b.id||0) - (a.id||0);
-      return cmp;
-    });
     if(monthInput) monthInput.disabled=true;
     if(dateInput) dateInput.disabled=true;
   } else {
@@ -2394,11 +2184,7 @@ function renderBookingTable(){
 
   const tbody=document.getElementById('booking-tbody');
   if(!tbody) return;
-
-  const countEl=document.getElementById('booking-count');
-  if(countEl) countEl.textContent = `📄 Total Entries: ${bookings.length}`;
-
-  if(bookings.length===0){ tbody.innerHTML=`<tr><td colspan="13" class="empty">${pendingOnly?'✅ Koi pending booking nahi':'Koi booking nahi mili'}</td></tr>`; return; }
+  if(bookings.length===0){ tbody.innerHTML=`<tr><td colspan="11" class="empty">${pendingOnly?'✅ Koi pending booking nahi':'Koi booking nahi mili'}</td></tr>`; return; }
   tbody.innerHTML=bookings.map(b=>{
     const balance=(+b.finalRent||0)-(+b.advance||0);
     const statusBadge=b.status==='Booking Pe Gayi'?'<span class="badge green">Booking Pe Gayi</span>':'<span class="badge amber">Cancel Ho Gayi</span>';
@@ -2415,8 +2201,6 @@ function renderBookingTable(){
       <td>${b.km?b.km+' KM':'—'}</td>
       <td>${fmtRs(b.bookingAmount)}</td>
       <td>${fmtRs(b.finalRent)}</td>
-      <td>${b.isCommission ? `<span class="badge blue">${fmtRs(b.commissionAmount)}</span>` : '—'}</td>
-      <td>${b.isCommission ? `<span class="badge green">${fmtRs((+b.finalRent||0) - (+b.commissionAmount||0))}</span>${b.ownerName ? `<br><small style="color:#888;white-space:nowrap;">(${b.ownerName})</small>` : ''}` : '—'}</td>
       <td>${fmtRs(b.advance)}</td>
       <td>${balBadge}</td>
       <td style="white-space:nowrap">
@@ -2534,11 +2318,6 @@ function saveCustomer(){
   if(mobile.length !== 11) { showToast('⚠️ Mobile number exactly 11 digits hona chahiye!'); return; }
   if(cnic && cnic.length !== 15) { showToast('⚠️ CNIC mukammal 13 digits hona chahiye!'); return; }
 
-  if(cnic){
-    const dupCustomer = getData('customers').find(x=>x.id!==editId && x.cnic && x.cnic.replace(/[^0-9]/g,'')===cnic.replace(/[^0-9]/g,''));
-    if(dupCustomer){ showToast(`⚠️ Yeh CNIC pehlay se "${dupCustomer.name}" ke naam se record mein maujood hai!`); return; }
-  }
-
   const obj={ id:editId||DB.id(), name, father:document.getElementById('c-father').value.trim(),
     cnic:cnic, mobile };
   let data=getData('customers');
@@ -2550,24 +2329,11 @@ function saveCustomer(){
 }
 
 function renderCustomerTable(){
-  let customers=getData('customers');
+  const customers=getData('customers');
   const rentals=getData('rentals');
   const tbody=document.getElementById('customer-tbody');
-  const countEl=document.getElementById('customer-count');
   if(!tbody) return;
-  if(customers.length===0){ tbody.innerHTML='<tr><td colspan="8" class="empty">Koi customer nahi — upar se add karein</td></tr>'; if(countEl) countEl.textContent='📄 Total Entries: 0'; return; }
-
-  const searchTerm=(document.getElementById('customer-search')?.value||'').trim().toLowerCase();
-  if(searchTerm){
-    customers=customers.filter(c=>
-      (c.name||'').toLowerCase().includes(searchTerm) ||
-      (c.father||'').toLowerCase().includes(searchTerm) ||
-      (c.cnic||'').toLowerCase().includes(searchTerm) ||
-      (c.mobile||'').toLowerCase().includes(searchTerm)
-    );
-  }
-  if(countEl) countEl.textContent = `📄 Total Entries: ${customers.length}`;
-  if(customers.length===0){ tbody.innerHTML='<tr><td colspan="8" class="empty">🔍 Koi customer nahi mila</td></tr>'; return; }
+  if(customers.length===0){ tbody.innerHTML='<tr><td colspan="8" class="empty">Koi customer nahi — upar se add karein</td></tr>'; return; }
 
   const withPending = customers.map(c=>{
     const custRentals = rentals.filter(r=>r.customer===c.name);
@@ -2629,10 +2395,6 @@ function saveVehicle(){
   const model=document.getElementById('v-model').value.trim();
   const rent=document.getElementById('v-rent').value;
   if(!number||!model||!rent){ showToast('⚠️ Gari Number, Model aur Rent zaroori hain!'); return; }
-
-  const dupVehicle = getData('vehicles').find(x=>x.id!==editId && (x.number||'').trim().toUpperCase()===number);
-  if(dupVehicle){ showToast(`⚠️ Yeh Gari Number pehlay se record mein maujood hai!`); return; }
-
   const obj={ id:editId||DB.id(), number, chassis:document.getElementById('v-chassis').value.trim(),
     model, year:document.getElementById('v-year').value, colour:document.getElementById('v-colour').value.trim(), rent:+rent };
   let data=getData('vehicles');
@@ -2644,24 +2406,11 @@ function saveVehicle(){
 }
 
 function renderVehicleTable(){
-  let vehicles=getData('vehicles');
+  const vehicles=getData('vehicles');
   const rentals=getData('rentals');
   const tbody=document.getElementById('vehicle-tbody');
-  const countEl=document.getElementById('vehicle-count');
   if(!tbody) return;
-  if(vehicles.length===0){ tbody.innerHTML='<tr><td colspan="8" class="empty">Koi gari nahi — upar se add karein</td></tr>'; if(countEl) countEl.textContent='📄 Total Entries: 0'; return; }
-
-  const searchTerm=(document.getElementById('vehicle-search')?.value||'').trim().toLowerCase();
-  if(searchTerm){
-    vehicles=vehicles.filter(v=>
-      (v.number||'').toLowerCase().includes(searchTerm) ||
-      (v.model||'').toLowerCase().includes(searchTerm) ||
-      (v.colour||'').toLowerCase().includes(searchTerm)
-    );
-  }
-  if(countEl) countEl.textContent = `📄 Total Entries: ${vehicles.length}`;
-  if(vehicles.length===0){ tbody.innerHTML='<tr><td colspan="8" class="empty">🔍 Koi gari nahi mili</td></tr>'; return; }
-
+  if(vehicles.length===0){ tbody.innerHTML='<tr><td colspan="8" class="empty">Koi gari nahi — upar se add karein</td></tr>'; return; }
   tbody.innerHTML=vehicles.map((v,i)=>{
     const vRentals=rentals.filter(r=>r.vehicle===v.number&&r.status==='Rent Pe Gayi');
     const totalEarned=vRentals.reduce((s,r)=>s+(r.isCommission ? (+r.commissionAmount||0) : (+r.rent||0)),0);
@@ -2777,187 +2526,13 @@ async function deleteExpense(id){
 }
 
 // ══════════════════════════════════════════════════════════════
-// OWNER PAYMENTS
-// ══════════════════════════════════════════════════════════════
-// Builds a lifetime ledger of every commission-based owner's total profit-share
-// (from ALL Rentals + Bookings, across all years), keyed by CNIC (or lowercased name if no CNIC).
-function getOwnerLedger(){
-  const rentals = getData('rentals').filter(r=>r.status==='Rent Pe Gayi' && r.isCommission);
-  const bookings = getData('bookings').filter(b=>b.status==='Booking Pe Gayi' && b.isCommission);
-  const map = {};
-  const add = (ownerName, ownerCnic, amount, commissionAmount) => {
-    const oCnic = ownerCnic ? ownerCnic.trim() : '';
-    const oName = ownerName ? ownerName.trim() : 'Unknown Owner';
-    const key = oCnic ? oCnic : oName.toLowerCase();
-    if(!map[key]) map[key] = { name: oName, cnic: oCnic, totalMunafa: 0 };
-    map[key].totalMunafa += ((+amount||0) - (+commissionAmount||0));
-  };
-  rentals.forEach(r=>add(r.ownerName, r.ownerCnic, r.rent, r.commissionAmount));
-  bookings.forEach(b=>add(b.ownerName, b.ownerCnic, b.finalRent, b.commissionAmount));
-  return map;
-}
-
-function populateOwnerPaymentDropdown(){
-  const ledger = getOwnerLedger();
-  const sel = document.getElementById('op-owner-key');
-  if(!sel) return;
-  const cur = sel.value;
-  let opts = '<option value="">— Owner Chunein —</option>';
-  Object.keys(ledger).forEach(key=>{
-    const label = ledger[key].cnic ? `${ledger[key].name} (${ledger[key].cnic})` : ledger[key].name;
-    opts += `<option value="${key}">${label}</option>`;
-  });
-  sel.innerHTML = opts;
-  sel.value = cur;
-}
-
-function openOwnerPaymentModal(id, presetKey){
-  editId = id || null;
-  populateOwnerPaymentDropdown();
-  if(id){
-    const p = (getData('ownerPayments')||[]).find(x=>x.id===id);
-    document.getElementById('owner-payment-modal-title').textContent = '🤝 Payment Edit Karein';
-    document.getElementById('op-owner-key').value = p.ownerKey||'';
-    document.getElementById('op-amount').value = p.amount||'';
-    document.getElementById('op-date').value = p.date||'';
-    document.getElementById('op-notes').value = p.notes||'';
-  } else {
-    document.getElementById('owner-payment-modal-title').textContent = '🤝 Owner Ko Payment Darj Karein';
-    document.getElementById('op-owner-key').value = presetKey||'';
-    document.getElementById('op-amount').value = '';
-    document.getElementById('op-date').value = today();
-    document.getElementById('op-notes').value = '';
-  }
-  openModal('owner-payment-modal');
-}
-
-function saveOwnerPayment(){
-  const ownerKey = document.getElementById('op-owner-key').value;
-  const amount = document.getElementById('op-amount').value;
-  const date = document.getElementById('op-date').value;
-  if(!ownerKey || amount===''||!date){ showToast('⚠️ Owner, Raqam aur Tarikh zaroori hain!'); return; }
-
-  const ledger = getOwnerLedger();
-  const ownerInfo = ledger[ownerKey] || { name: ownerKey, cnic: '' };
-
-  const obj = {
-    id: editId||DB.id(), ownerKey, ownerName: ownerInfo.name, ownerCnic: ownerInfo.cnic,
-    amount: +amount||0, date, notes: document.getElementById('op-notes').value
-  };
-  let payments = getData('ownerPayments')||[];
-  if(editId) payments = payments.map(x=>x.id===editId?obj:x);
-  else payments.unshift(obj);
-  saveData('ownerPayments', payments);
-  closeModal('owner-payment-modal');
-  renderOwnerPaymentsPage();
-  showToast('✅ Payment save ho gaya!');
-}
-
-async function deleteOwnerPayment(id){
-  if(!(await customConfirm('Yeh payment entry Recycle Bin mein jayegi. Theek hai?'))) return;
-  const all = getData('ownerPayments')||[];
-  const item = all.find(x=>x.id===id);
-  if(item) moveToTrash('ownerPayments', item);
-  saveData('ownerPayments', all.filter(x=>x.id!==id));
-  renderOwnerPaymentsPage();
-  showToast('🗑️ Recycle Bin mein chala gaya');
-}
-
-function renderOwnerLedgerTable(){
-  const ledger = getOwnerLedger();
-  const payments = getData('ownerPayments')||[];
-  const tbody = document.getElementById('owner-ledger-tbody');
-  if(!tbody) return;
-
-  const paidByKey = {};
-  payments.forEach(p=>{ paidByKey[p.ownerKey] = (paidByKey[p.ownerKey]||0) + (+p.amount||0); });
-
-  // Include owners who have payment history but (for whatever reason) no active commission entry anymore
-  Object.keys(paidByKey).forEach(k=>{
-    if(!ledger[k]){
-      const ref = payments.find(p=>p.ownerKey===k);
-      ledger[k] = { name: ref ? ref.ownerName : 'Unknown Owner', cnic: ref ? (ref.ownerCnic||'') : '', totalMunafa: 0 };
-    }
-  });
-
-  const allKeys = Object.keys(ledger);
-  let totalMunafaAll=0, totalPaidAll=0;
-
-  if(allKeys.length===0){
-    tbody.innerHTML = '<tr><td colspan="5" class="empty">Abhi tak koi Commission-based Rental/Booking nahi hui</td></tr>';
-  } else {
-    tbody.innerHTML = allKeys.map(key=>{
-      const data = ledger[key];
-      const paid = paidByKey[key]||0;
-      const balance = data.totalMunafa - paid;
-      totalMunafaAll += data.totalMunafa;
-      totalPaidAll += paid;
-      const balBadge = balance>0 ? `<span class="badge red">${fmtRs(balance)}</span>` : balance<0 ? `<span class="badge amber">${fmtRs(Math.abs(balance))} Ziada Diya</span>` : `<span class="badge green">Saaf</span>`;
-      const displayName = data.cnic ? `${data.name} <br><small style="color:#888;">${data.cnic}</small>` : data.name;
-      return `<tr>
-        <td><strong>${displayName}</strong></td>
-        <td>${fmtRs(data.totalMunafa)}</td>
-        <td><span class="badge blue">${fmtRs(paid)}</span></td>
-        <td>${balBadge}</td>
-        <td><button class="btn btn-primary btn-sm" data-key="${key}" onclick="openOwnerPaymentModal(null, this.dataset.key)">＋ Payment</button></td>
-      </tr>`;
-    }).join('');
-  }
-
-  document.getElementById('own-total-munafa').textContent = fmtRs(totalMunafaAll);
-  document.getElementById('own-total-paid').textContent = fmtRs(totalPaidAll);
-  document.getElementById('own-total-balance').textContent = fmtRs(totalMunafaAll-totalPaidAll);
-}
-
-function renderOwnerPaymentTable(){
-  let payments = getData('ownerPayments')||[];
-  const searchTerm = (document.getElementById('owner-payment-search')?.value||'').trim().toLowerCase();
-  if(searchTerm){
-    payments = payments.filter(p=> (p.ownerName||'').toLowerCase().includes(searchTerm) || (p.ownerCnic||'').toLowerCase().includes(searchTerm));
-  }
-  payments = [...payments].sort((a,b)=>{
-    let cmp=(b.date||'').localeCompare(a.date||'');
-    if(cmp===0) return (b.id||0)-(a.id||0);
-    return cmp;
-  });
-
-  const countEl = document.getElementById('owner-payment-count');
-  if(countEl) countEl.textContent = `📄 Total Entries: ${payments.length}`;
-
-  const tbody = document.getElementById('owner-payment-tbody');
-  if(!tbody) return;
-  if(payments.length===0){ tbody.innerHTML = '<tr><td colspan="5" class="empty">Koi payment record nahi</td></tr>'; return; }
-  tbody.innerHTML = payments.map(p=>{
-    const displayName = p.ownerCnic ? `${p.ownerName} <br><small style="color:#888;">${p.ownerCnic}</small>` : p.ownerName;
-    return `<tr>
-      <td>${fmtDate(p.date)}</td>
-      <td>${displayName}</td>
-      <td><span class="badge blue">${fmtRs(p.amount)}</span></td>
-      <td>${p.notes||'—'}</td>
-      <td style="white-space:nowrap">
-        <button class="btn btn-outline btn-sm" onclick="openOwnerPaymentModal('${p.id}')">✏️</button>
-        <button class="btn btn-danger btn-sm" data-pid="${p.id}" onclick="deleteOwnerPayment(this.dataset.pid)">🗑️</button>
-      </td>
-    </tr>`;
-  }).join('');
-}
-
-function renderOwnerPaymentsPage(){
-  renderOwnerLedgerTable();
-  renderOwnerPaymentTable();
-}
-
-// ══════════════════════════════════════════════════════════════
 // REPORTS
 // ══════════════════════════════════════════════════════════════
 function renderReports(){
   const year=+document.getElementById('report-year').value||curYear();
   const rentals=getData('rentals').filter(r=>r.date?.startsWith(year+'')&&r.status==='Rent Pe Gayi');
-  const bookings=getData('bookings').filter(b=>b.dateOut?.startsWith(year+'')&&b.status==='Booking Pe Gayi');
   const expenses=getData('expenses').filter(e=>e.date?.startsWith(year+''));
-  const rentalIncome=rentals.reduce((s,r)=>s+(r.isCommission ? (+r.commissionAmount||0) : (+r.rent||0)),0);
-  const bookingIncome=bookings.reduce((s,b)=>s+(b.isCommission ? (+b.commissionAmount||0) : (+b.finalRent||0)),0);
-  const totalIncome=rentalIncome+bookingIncome;
+  const totalIncome=rentals.reduce((s,r)=>s+(r.isCommission ? (+r.commissionAmount||0) : (+r.rent||0)),0);
   const totalExp=expenses.reduce((s,e)=>s+(+e.amount||0),0);
   document.getElementById('rep-income').textContent=fmtRs(totalIncome);
   document.getElementById('rep-expense').textContent=fmtRs(totalExp);
@@ -2966,22 +2541,20 @@ function renderReports(){
   const ownerFilterEl = document.getElementById('report-owner-filter');
   const selectedOwner = ownerFilterEl?.value || '';
 
-  // OWNER LOGIC — combines commission-based Rentals AND commission-based Bookings
-  const commissionSource = [
-    ...rentals.filter(r=>r.isCommission).map(r=>({ownerName:r.ownerName, ownerCnic:r.ownerCnic, amount:+r.rent||0, commissionAmount:+r.commissionAmount||0})),
-    ...bookings.filter(b=>b.isCommission).map(b=>({ownerName:b.ownerName, ownerCnic:b.ownerCnic, amount:+b.finalRent||0, commissionAmount:+b.commissionAmount||0}))
-  ];
+  // OWNER LOGIC
   const ownersMap = {};
-  commissionSource.forEach(item => {
-    const oCnic = item.ownerCnic ? item.ownerCnic.trim() : '';
-    const oName = item.ownerName ? item.ownerName.trim() : 'Unknown Owner';
-    const key = oCnic ? oCnic : oName.toLowerCase();
-    const displayName = oCnic ? `${oName} <br><small style="color:#888;">${oCnic}</small>` : oName;
+  rentals.forEach(r => {
+    if(r.isCommission) {
+      const oCnic = r.ownerCnic ? r.ownerCnic.trim() : '';
+      const oName = r.ownerName ? r.ownerName.trim() : 'Unknown Owner';
+      const key = oCnic ? oCnic : oName.toLowerCase();
+      const displayName = oCnic ? `${oName} <br><small style="color:#888;">${oCnic}</small>` : oName;
 
-    if(!ownersMap[key]) ownersMap[key] = { name: displayName, count: 0, ownerTotal: 0, compTotal: 0, rawName: oName, rawCnic: oCnic };
-    ownersMap[key].count++;
-    ownersMap[key].compTotal += item.commissionAmount;
-    ownersMap[key].ownerTotal += (item.amount - item.commissionAmount);
+      if(!ownersMap[key]) ownersMap[key] = { name: displayName, count: 0, ownerTotal: 0, compTotal: 0, rawName: oName, rawCnic: oCnic };
+      ownersMap[key].count++;
+      ownersMap[key].compTotal += (+r.commissionAmount||0);
+      ownersMap[key].ownerTotal += ((+r.rent||0) - (+r.commissionAmount||0));
+    }
   });
 
   if(ownerFilterEl) {
@@ -3035,16 +2608,10 @@ function renderReports(){
   }
 
   const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const monthIncomeOf = (ii) => {
-    const mp = year+'-'+String(ii+1).padStart(2,'0');
-    const rInc = rentals.filter(r=>r.date?.startsWith(mp)).reduce((s,r)=>s+(r.isCommission ? (+r.commissionAmount||0) : (+r.rent||0)),0);
-    const bInc = bookings.filter(b=>b.dateOut?.startsWith(mp)).reduce((s,b)=>s+(b.isCommission ? (+b.commissionAmount||0) : (+b.finalRent||0)),0);
-    return rInc+bInc;
-  };
   const rows=months.map((m,i)=>{
     const mn=String(i+1).padStart(2,'0');
     const mPrefix=year+'-'+mn;
-    const mInc=monthIncomeOf(i);
+    const mInc=rentals.filter(r=>r.date?.startsWith(mPrefix)).reduce((s,r)=>s+(r.isCommission ? (+r.commissionAmount||0) : (+r.rent||0)),0);
     const mExp=expenses.filter(e=>e.date?.startsWith(mPrefix)).reduce((s,e)=>s+(+e.amount||0),0);
     const mProfit=mInc-mExp;
     const profitColor=mProfit>0?'var(--green)':mProfit<0?'var(--red)':'#888';
@@ -3055,7 +2622,7 @@ function renderReports(){
       <td style="font-weight:700;color:${profitColor}">${fmtRs(mProfit)}</td>
       <td>
         <div class="profit-bar-wrap" style="height:10px">
-          <div class="profit-bar" style="width:${mInc?Math.min(mInc/Math.max(...months.map((_,ii)=>monthIncomeOf(ii)))*100,100):0}%;background:${mProfit>0?'#1b5e20':'#b71c1c'}"></div>
+          <div class="profit-bar" style="width:${mInc?Math.min(mInc/Math.max(...months.map((_,ii)=>rentals.filter(r=>r.date?.startsWith(year+'-'+String(ii+1).padStart(2,'0'))).reduce((s,r)=>s+(+r.rent||0),0)))*100,100):0}%;background:${mProfit>0?'#1b5e20':'#b71c1c'}"></div>
         </div>
       </td>
     </tr>`;
@@ -3272,11 +2839,10 @@ function exportToExcel(type){
     });
   } else if(type==='bookings'){
     filename='Booking-Log';
-    rows=[['Gaya Tarikh','Gaya Waqt','Wapsi Tarikh','Wapsi Waqt','Gari','Driver Naam','Driver CNIC','Driver Mobile','Status','KM','Booking Amt (Rs)','Final Rent (Rs)','Commission (Rs)','Owner Naam','Owner Amt (Rs)','Advance (Rs)','Balance (Rs)','Notes']];
+    rows=[['Gaya Tarikh','Gaya Waqt','Wapsi Tarikh','Wapsi Waqt','Gari','Driver Naam','Driver CNIC','Driver Mobile','Status','KM','Booking Amt (Rs)','Final Rent (Rs)','Advance (Rs)','Balance (Rs)','Notes']];
     getData('bookings').forEach(b=>{
       const bal=(+b.finalRent||0)-(+b.advance||0);
-      const ownerAmt = b.isCommission ? ((+b.finalRent||0)-(+b.commissionAmount||0)) : '';
-      rows.push([b.dateOut||'',b.timeOut||'',b.dateIn||'',b.timeIn||'',b.vehicle,b.driverName||'',b.driverCnic||'',b.driverMobile||'',b.status,b.km||'',+b.bookingAmount||0,+b.finalRent||0,b.isCommission?(+b.commissionAmount||0):'',b.isCommission?(b.ownerName||''):'',ownerAmt,+b.advance||0,bal,b.notes||'']);
+      rows.push([b.dateOut||'',b.timeOut||'',b.dateIn||'',b.timeIn||'',b.vehicle,b.driverName||'',b.driverCnic||'',b.driverMobile||'',b.status,b.km||'',+b.bookingAmount||0,+b.finalRent||0,+b.advance||0,bal,b.notes||'']);
     });
   } else if(type==='customers'){
     filename='Customers';
@@ -3290,22 +2856,6 @@ function exportToExcel(type){
     filename='Kharcha-Log';
     rows=[['Tarikh','Qism','Gari','Tafseelat','Raqam (Rs)']];
     getData('expenses').forEach(e=>rows.push([e.date,e.type,e.vehicle||'',e.desc||'',+e.amount||0]));
-  } else if(type==='ownerpayments'){
-    filename='Owner-Payments';
-    const ledger = getOwnerLedger();
-    const payments = getData('ownerPayments')||[];
-    const paidByKey = {};
-    payments.forEach(p=>{ paidByKey[p.ownerKey] = (paidByKey[p.ownerKey]||0) + (+p.amount||0); });
-    rows.push(['=== OWNER-WISE HISAAB ===']);
-    rows.push(['Owner Naam','Owner CNIC','Total Munafa (Rs)','Ab Tak Ada (Rs)','Baaki (Rs)']);
-    Object.keys(ledger).forEach(key=>{
-      const data=ledger[key]; const paid=paidByKey[key]||0;
-      rows.push([data.name, data.cnic||'', data.totalMunafa, paid, data.totalMunafa-paid]);
-    });
-    rows.push([]);
-    rows.push(['=== PAYMENT HISTORY ===']);
-    rows.push(['Tarikh','Owner Naam','Owner CNIC','Raqam (Rs)','Notes']);
-    payments.forEach(p=>rows.push([p.date,p.ownerName||'',p.ownerCnic||'',+p.amount||0,p.notes||'']));
   } else if(type==='all'){
     filename='Poora-Data';
     rows.push(['=== RENTAL LOG ===']);
